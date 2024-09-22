@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCopy, FaCheck, FaMoon, FaSun, FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import GradualSpacing from "@/components/magicui/gradual-spacing";
@@ -12,6 +12,21 @@ export default function Home() {
   const [copied, setCopied] = useState(false);
   const [copied1, setCopied1] = useState(false);
   const [copied2, setCopied2] = useState(false);
+  const [downloadCount, setDownloadCount] = useState(0);
+
+  useEffect(() => {
+    const fetchDownloadCount = async () => {
+      try {
+        const response = await fetch('/api/getDownloadCount');
+        const data = await response.json();
+        setDownloadCount(data.downloadCount);
+      } catch (error) {
+        console.error('Failed to fetch download count:', error);
+      }
+    };
+
+    fetchDownloadCount();
+  }, []);
 
   const handleCopy = (textToCopy: string) => {
     navigator.clipboard.writeText(textToCopy);
@@ -122,7 +137,7 @@ export default function Home() {
             Fully Open-source
           </span>
           <span>&nbsp;•&nbsp;</span>
-          <NumberTicker value={151} className="text-lg font-medium" />
+          <NumberTicker value={downloadCount} className="text-lg font-medium" />
           <span className="font-bold text-base">&nbsp;Downloads</span>
         </div>
 
