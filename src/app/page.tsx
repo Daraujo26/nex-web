@@ -1,20 +1,39 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { FaCopy, FaCheck, FaMoon, FaSun, FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import GradualSpacing from "@/components/magicui/gradual-spacing";
 import BlurFade from "@/components/magicui/blur-fade";
+import NumberTicker from "@/components/magicui/number-ticker";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [copied1, setCopied1] = useState(false);
+  const [copied2, setCopied2] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText("curl https://NexSpectations.com");
+  const handleCopy = (textToCopy: string) => {
+    navigator.clipboard.writeText(textToCopy);
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
+    }, 2000);
+  };
+
+  const handleCopy1 = (textToCopy: string) => {
+    navigator.clipboard.writeText(textToCopy);
+    setCopied1(true);
+    setTimeout(() => {
+      setCopied1(false);
+    }, 2000);
+  };
+
+  const handleCopy2 = (textToCopy: string) => {
+    navigator.clipboard.writeText(textToCopy);
+    setCopied2(true);
+    setTimeout(() => {
+      setCopied2(false);
     }, 2000);
   };
 
@@ -71,7 +90,7 @@ export default function Home() {
           <GradualSpacing className="text-6xl font-bold" text="Nex" />
           <GradualSpacing
             className="text-m font-bold"
-            text="DISTRIBUTED PACKAGE MANAGMENT"
+            text="DISTRIBUTED PACKAGE MANAGEMENT"
           />
         </div>
 
@@ -81,7 +100,7 @@ export default function Home() {
             $ curl https://NexSpectations.com
           </p>
           <button
-            onClick={handleCopy}
+            onClick={() => handleCopy("curl https://NexSpectations.com")}
             className={`px-4 py-2 rounded-md ml-2 transition hover:text-black dark:hover:text-white ${
               copied ? "animate-pulse" : ""
             }`}
@@ -97,32 +116,86 @@ export default function Home() {
           </button>
         </div>
 
+        {/* Downloads Ticker */}
+        <div className="flex flex-row align-center items-center dark:text-white p-2">
+          <span className="font-bold text-base text-green-500">
+            Fully Open-source
+          </span>
+          <span>&nbsp;•&nbsp;</span>
+          <NumberTicker value={151} className="text-lg font-medium" />
+          <span className="font-bold text-base">&nbsp;Downloads</span>
+        </div>
+
         {/* Information Section */}
         <div className="mt-20 w-full">
           <BlurFade delay={0.25} inView>
             <p className="text-4xl font-bold">What Does Nex Do?</p>
 
-            <div className="flex flex-row justify-center items-center mt-10 gap-20">
-              <div>
-                <p className="text-left h-50">
+            {/* Row with Text and Command Snippet */}
+            <div className="flex flex-row justify-evenly items-start mt-10 gap-10 ">
+              {/* Text on the Left */}
+              <div className="text-left max-w-md">
+                <p>
                   Homebrew installs the stuff you need that Apple (or your Linux
                   system) didn’t.
                 </p>
               </div>
-              <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-3 shadow-2xl">
-                <p className="bg-transparent text-gray-800 dark:text-gray-200 font-mono px-4 py-2 outline-none">
-                  $ brew install wget
+
+              {/* Command Snippet on the Right */}
+              <div className="flex flex-col bg-gray-100 dark:bg-gray-800 rounded-lg p-3 shadow-2xl max-w-md">
+                <div className="flex justify-between items-center">
+                  <p className="bg-transparent text-gray-800 dark:text-gray-200 font-mono px-4 py-2 outline-none">
+                    $ brew install wget
+                  </p>
+                  <button
+                    onClick={() => handleCopy1("brew install wget")}
+                    className={`px-4 py-2 rounded-md ml-2 transition hover:text-black dark:hover:text-white ${
+                      copied1 ? "animate-pulse" : ""
+                    }`}
+                    style={{
+                      transition: "color 0.3s ease",
+                    }}
+                  >
+                    {copied1 ? (
+                      <FaCheck className="text-gray-800 animate-fade-in-out" />
+                    ) : (
+                      <FaCopy className="text-gray-800" />
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Another Row for Multi-line Command */}
+            <div className="flex flex-row justify-evenly items-start mt-10 gap-10">
+              {/* Text on the Left */}
+              <div className="text-left max-w-md">
+                <p>
+                  Homebrew installs packages to their own directory and then
+                  symlinks their files into /opt/homebrew (on Apple Silicon).
                 </p>
+              </div>
+
+              {/* Multi-line Command Snippet on the Right */}
+              <div className="flex flex-col bg-gray-100 dark:bg-gray-800 rounded-lg p-3 shadow-2xl max-w-md">
+                <div className="flex flex-col">
+                  <p className="bg-transparent text-gray-800 dark:text-gray-200 font-mono px-4 py-2 outline-none">
+                    $ cd /opt/homebrew
+                  </p>
+                  <p className="bg-transparent text-gray-800 dark:text-gray-200 font-mono px-4 py-2 outline-none">
+                    $ find Cellar
+                  </p>
+                </div>
                 <button
-                  onClick={handleCopy}
-                  className={`px-4 py-2 rounded-md ml-2 transition hover:text-black dark:hover:text-white ${
-                    copied ? "animate-pulse" : ""
+                  onClick={() => handleCopy2("cd /opt/homebrew\nfind Cellar")}
+                  className={`px-4 py-2 rounded-md mt-2 self-end transition hover:text-black dark:hover:text-white ${
+                    copied2 ? "animate-pulse" : ""
                   }`}
                   style={{
                     transition: "color 0.3s ease",
                   }}
                 >
-                  {copied ? (
+                  {copied2 ? (
                     <FaCheck className="text-gray-800 animate-fade-in-out" />
                   ) : (
                     <FaCopy className="text-gray-800" />
