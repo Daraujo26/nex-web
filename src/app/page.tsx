@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import { FaCopy, FaCheck, FaMoon, FaSun, FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import GradualSpacing from "@/components/magicui/gradual-spacing";
-import BlurFade from "@/components/magicui/blur-fade";
+// import BlurFade from "@/components/magicui/blur-fade";
 import NumberTicker from "@/components/magicui/number-ticker";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [copied1, setCopied1] = useState(false);
-  const [copied2, setCopied2] = useState(false);
+  // const [copied1, setCopied1] = useState(false);
+  // const [copied2, setCopied2] = useState(false);
   const [downloadCount, setDownloadCount] = useState(0);
 
   useEffect(() => {
@@ -40,21 +40,21 @@ export default function Home() {
     }, 2000);
   };
 
-  const handleCopy1 = (textToCopy: string) => {
-    navigator.clipboard.writeText(textToCopy);
-    setCopied1(true);
-    setTimeout(() => {
-      setCopied1(false);
-    }, 2000);
-  };
+  // const handleCopy1 = (textToCopy: string) => {
+  //   navigator.clipboard.writeText(textToCopy);
+  //   setCopied1(true);
+  //   setTimeout(() => {
+  //     setCopied1(false);
+  //   }, 2000);
+  // };
 
-  const handleCopy2 = (textToCopy: string) => {
-    navigator.clipboard.writeText(textToCopy);
-    setCopied2(true);
-    setTimeout(() => {
-      setCopied2(false);
-    }, 2000);
-  };
+  // const handleCopy2 = (textToCopy: string) => {
+  //   navigator.clipboard.writeText(textToCopy);
+  //   setCopied2(true);
+  //   setTimeout(() => {
+  //     setCopied2(false);
+  //   }, 2000);
+  // };
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
