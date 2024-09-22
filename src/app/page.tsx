@@ -17,9 +17,13 @@ export default function Home() {
   useEffect(() => {
     const fetchDownloadCount = async () => {
       try {
-        const response = await fetch('/api/getDownloadCount');
+        const response = await fetch('http://167.71.24.166/api/getDownloadCount/');
         const data = await response.json();
-        setDownloadCount(data.downloadCount);
+        if (response.ok) {
+          setDownloadCount(data.downloadCount);
+        } else {
+          console.error('Failed to fetch download count:', data.error);
+        }
       } catch (error) {
         console.error('Failed to fetch download count:', error);
       }
@@ -112,10 +116,10 @@ export default function Home() {
         {/* Copy Command Section */}
         <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-3 shadow-2xl">
           <p className="bg-transparent text-gray-800 dark:text-gray-200 font-mono px-4 py-2 outline-none w-fit">
-            $ curl -O https://nexinaction.com/api/download
+            $ curl -O https://nexinaction.com/api/nex
           </p>
           <button
-            onClick={() => handleCopy("curl -O https://nexinaction.com/api/download")}
+            onClick={() => handleCopy("curl -O https://nexinaction.com/api/nex")}
             className={`px-4 py-2 rounded-md ml-2 transition hover:text-black dark:hover:text-white ${
               copied ? "animate-pulse" : ""
             }`}
