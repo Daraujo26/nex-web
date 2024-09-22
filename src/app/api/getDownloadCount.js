@@ -38,6 +38,6 @@ export default async function handler(req, res) {
     }
     res.status(200).json({ downloadCount: counter.downloadCount });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch download count' });
+    res.status(500).json({ error: `Failed to fetch download count -- ${error}` });
   }
 }
