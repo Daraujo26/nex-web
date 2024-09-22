@@ -1,27 +1,23 @@
 import { join } from 'path';
 import { promises as fs } from 'fs';
 
-
 export async function GET() {
-
   // Query Django API to increment the download count
   try {
-    const incrementResponse = await fetch(process.env.URL_TO_API ?? '');
+    const incrementResponse = await fetch(process.env.URL_TO_API ?? '', {
+      method: 'POST', // Change to POST
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     if (!incrementResponse.ok) {
-      return new Response(JSON.stringify({ message: 'Failed to increment download count' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      console.error('Failed to increment download count');
+    } else {
+      console.log('Download count incremented');
     }
-
-    console.log('Download count incremented');
   } catch (error) {
     console.error('Error incrementing download count:', error);
-    return new Response(JSON.stringify({ message: 'Error incrementing download count' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
   }
 
   const filePath = join(process.cwd(), 'public/bin/nex'); 
