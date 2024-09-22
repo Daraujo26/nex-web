@@ -112,10 +112,10 @@ export default function Home() {
         {/* Copy Command Section */}
         <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-3 shadow-2xl">
           <p className="bg-transparent text-gray-800 dark:text-gray-200 font-mono px-4 py-2 outline-none w-fit">
-            $ curl https://NexSpectations.com
+            $ curl -O https://nexinaction.com/api/download
           </p>
           <button
-            onClick={() => handleCopy("curl https://NexSpectations.com")}
+            onClick={() => handleCopy("curl -O https://nexinaction.com/api/download")}
             className={`px-4 py-2 rounded-md ml-2 transition hover:text-black dark:hover:text-white ${
               copied ? "animate-pulse" : ""
             }`}
