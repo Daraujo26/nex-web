@@ -145,14 +145,14 @@ export default function Home() {
           <span className="font-bold text-base">&nbsp;Downloads</span>
         </div>
 
-        {/* Information Section */}
+        {/* Information Section 
         <div className="mt-20 w-full">
           <BlurFade delay={0.25} inView>
             <p className="text-4xl font-bold">What Does Nex Do?</p>
 
-            {/* Row with Text and Command Snippet */}
+            Row with Text and Command Snippet
             <div className="flex flex-row justify-evenly items-start mt-10 gap-10 ">
-              {/* Text on the Left */}
+              {/* Text on the Left 
               <div className="text-left max-w-md">
                 <p>
                   Homebrew installs the stuff you need that Apple (or your Linux
@@ -160,7 +160,7 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Command Snippet on the Right */}
+              Command Snippet on the Right
               <div className="flex flex-col bg-gray-100 dark:bg-gray-800 rounded-lg p-3 shadow-2xl max-w-md">
                 <div className="flex justify-between items-center">
                   <p className="bg-transparent text-gray-800 dark:text-gray-200 font-mono px-4 py-2 outline-none">
@@ -185,9 +185,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Another Row for Multi-line Command */}
+            Another Row for Multi-line Command
             <div className="flex flex-row justify-evenly items-start mt-10 gap-10">
-              {/* Text on the Left */}
+              Text on the Left
               <div className="text-left max-w-md">
                 <p>
                   Homebrew installs packages to their own directory and then
@@ -195,7 +195,7 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Multi-line Command Snippet on the Right */}
+              Multi-line Command Snippet on the Right
               <div className="flex flex-col bg-gray-100 dark:bg-gray-800 rounded-lg p-3 shadow-2xl max-w-md">
                 <div className="flex flex-col">
                   <p className="bg-transparent text-gray-800 dark:text-gray-200 font-mono px-4 py-2 outline-none">
@@ -224,6 +224,10 @@ export default function Home() {
             </div>
           </BlurFade>
         </div>
+        
+        
+        */}
+        
       </main>
     </div>
   );
