@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     const fetchDownloadCount = async () => {
       try {
-        const response = await fetch('http://167.71.24.166/api/getDownloadCount/');
+        const response = await fetch('https://api.nexinaction.com/api/getDownloadCount/');
         const data = await response.json();
         if (response.ok) {
           setDownloadCount(data.downloadCount);
