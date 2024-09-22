@@ -4,12 +4,7 @@ import { promises as fs } from 'fs';
 export async function GET() {
   // Query Django API to increment the download count
   try {
-    const incrementResponse = await fetch(process.env.URL_TO_API ?? '', {
-      method: 'POST', // Change to POST
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const incrementResponse = await fetch(process.env.URL_TO_API ?? '');
 
     if (!incrementResponse.ok) {
       console.error('Failed to increment download count');
